@@ -1,12 +1,4 @@
 import { StyleSheet, Text, View, ImageBackground } from "react-native";
-import {
-  Colors,
-  Card,
-  CardProps,
-  Button,
-  Switch,
-  RadioButton,
-} from "react-native-ui-lib";
 
 export default function BankCard(props: any): JSX.Element {
   //   const { title } = props;
