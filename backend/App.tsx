@@ -1,14 +1,18 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Slider, SafeAreaView } from "react-native";
+import { StyleSheet, SafeAreaView } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import BankCard from "./src/components/BankCard";
+import Accounts from "./src/screens/Accounts";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <BankCard />
-      <StatusBar style="auto" />
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Accounts" component={Accounts} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
