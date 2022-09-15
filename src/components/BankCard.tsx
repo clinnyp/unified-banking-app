@@ -10,9 +10,17 @@ export default function BankCard(props: any): JSX.Element {
       <View style={styles.container}>
         <ImageBackground source={image} resizeMode="cover" style={styles.image}>
           <View style={styles.detailsContainer}>
-            <Text>Daily Expenses</Text>
-            <Text>$30.45</Text>
-            <Text>$30.07 Available</Text>
+            <Text style={{ textAlign: "center", fontSize: 16 }}>
+              Daily Expenses
+            </Text>
+            <Text
+              style={{ textAlign: "center", fontSize: 24, paddingVertical: 5 }}
+            >
+              $30.45
+            </Text>
+            <Text style={{ textAlign: "center", fontSize: 12 }}>
+              $30.07 Available
+            </Text>
           </View>
         </ImageBackground>
       </View>
@@ -24,15 +32,24 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignSelf: "stretch",
-    maxHeight: "15%",
+    maxHeight: "20%",
   },
   detailsContainer: {
     alignSelf: "center",
     borderStyle: "solid",
     backgroundColor: "#FFFFFF",
     borderRadius: 5,
-    paddingHorizontal: 30,
+    paddingHorizontal: 40,
     paddingVertical: 10,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+
+    elevation: 3,
   },
   image: {
     flex: 1,
