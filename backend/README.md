@@ -10,4 +10,4 @@ This personal project is my way of showing people interested in what I have been
 - Implement UI for bank transfer/payments
 
 # Progress so far
-<img src="https://your-image-url.type](https://github.com/clintonphilathong/open-banking-mobile-app/blob/main/screenshots/Simulator%20Screen%20Shot%20-%20iPhone%2014%20Pro%20Max%20-%202022-09-15%20at%2019.26.41.png" width="100" height="200"> 
+<img src="https://github.com/clintonphilathong/open-banking-mobile-app/blob/main/screenshots/Simulator%20Screen%20Shot%20-%20iPhone%2014%20Pro%20Max%20-%202022-09-15%20at%2019.26.41.png" width="100" height="200"> 
