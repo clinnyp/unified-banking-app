@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { StyleSheet, SafeAreaView, Button, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
@@ -20,6 +21,8 @@ function Placeholder({ navigation }) {
 }
 
 export default function App() {
+  const [toggleList, setToggleList] = useState(false);
+
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -28,19 +31,19 @@ export default function App() {
             let iconName;
 
             if (route.name === "Accounts") {
-              iconName = focused ? "wallet" : "wallet-outline";
+              iconName = focused ? "home" : "home-outline";
             } else if (route.name === "Transfer") {
               iconName = focused
                 ? "swap-horizontal"
                 : "swap-horizontal-outline";
             } else if (route.name === "Payments") {
-              iconName = focused ? "cash" : "cash-outline";
+              iconName = focused ? "wallet" : "wallet-outline";
             }
 
             // You can return any component that you like here!
             return <Ionicons name={iconName} size={size} color={color} />;
           },
-          tabBarActiveTintColor: "tomato",
+          tabBarActiveTintColor: "#0A84FF",
           tabBarInactiveTintColor: "gray",
         })}
       >
@@ -58,10 +61,11 @@ export default function App() {
             ),
             headerLeft: () => (
               <Ionicons
-                name="list"
+                name={toggleList === true ? "tablet-landscape-outline" : "list"}
                 style={{ marginLeft: 15 }}
                 size={24}
                 color="#007AFF"
+                onPress={() => setToggleList(!toggleList)}
               />
             ),
             headerTitleAlign: "center",
@@ -86,7 +90,7 @@ const styles = StyleSheet.create({
   },
   button: {
     color: "#0A84FF",
-    fontWeight: "500",
+    fontWeight: "400",
     fontSize: 18,
   },
 });

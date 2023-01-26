@@ -7,6 +7,8 @@ export default function Home() {
   return (
     <SafeAreaView style={styles.container}>
       <BankCard />
+      <BankCard />
+      <BankCard />
       <StatusBar style="auto" />
     </SafeAreaView>
   );
