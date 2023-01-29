@@ -15,13 +15,17 @@ model User {
 
   email String @unique
 
-  name String
+  firstname String @db.VarChar(255)
 
-  lastname String
+  lastname String @db.VarChar(255)
 
   username String @unique
 
   password String
 
   createdAt DateTime @default(now())
+
+  connected Boolean @default(false) 
+
 }
+
