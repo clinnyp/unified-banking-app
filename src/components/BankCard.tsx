@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, ImageBackground } from "react-native";
 
 export default function BankCard(props: any): JSX.Element {
-  //   const { title } = props;
+  const { name, bankName, amount, available } = props;
   const image = {
     uri: "https://images.unsplash.com/photo-1465056836041-7f43ac27dcb5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
   };
@@ -10,16 +10,14 @@ export default function BankCard(props: any): JSX.Element {
       <View style={styles.container}>
         <ImageBackground source={image} resizeMode="cover" style={styles.image}>
           <View style={styles.detailsContainer}>
-            <Text style={{ textAlign: "center", fontSize: 16 }}>
-              Daily Expenses
-            </Text>
+            <Text style={{ textAlign: "center", fontSize: 14 }}>{name}</Text>
             <Text
               style={{ textAlign: "center", fontSize: 24, paddingVertical: 5 }}
             >
-              $30.45
+              {amount}
             </Text>
             <Text style={{ textAlign: "center", fontSize: 12 }}>
-              $30.07 Available
+              {`${available} Available`}
             </Text>
           </View>
         </ImageBackground>
@@ -32,14 +30,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignSelf: "stretch",
-    maxHeight: "20%",
+    // maxHeight: "20%",
   },
   detailsContainer: {
     alignSelf: "center",
     borderStyle: "solid",
     backgroundColor: "#FFFFFF",
     borderRadius: 5,
-    paddingHorizontal: 40,
+    minWidth: "50%",
+    margin: "5%",
     paddingVertical: 10,
     shadowColor: "#000",
     shadowOffset: {
@@ -53,6 +52,7 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
+    height: "100%",
     justifyContent: "center",
   },
   text: {
