@@ -3,6 +3,7 @@ import morgan from "morgan";
 import router from "./router";
 import cors from "cors";
 import { protect } from "./utils/auth";
+import { createNewUser, signIn } from "./handlers/user";
 
 const app = express();
 
@@ -11,13 +12,9 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-/**
- * /api protected route
- */
+app.use("/api", protect, router);
 
-//app.use('/api', protect, router)
-
-// app.post('/user', createNewUser)
-// app.post('/signin', signIn)
+app.post("/user", createNewUser);
+app.post("/signin", signIn);
 
 export default app;
