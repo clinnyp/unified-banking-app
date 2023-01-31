@@ -58,12 +58,7 @@ export const signIn = async (req, res, next) => {
 
 export const getConnections = async (req, res) => {
   try {
-    const response = await axios.get("https://api.akahu.io/v1/accounts", {
-      headers: {
-        Authorization: `Bearer ${process.env.USER_TOKEN}`,
-        "X-Akahu-ID": process.env.APP_TOKEN,
-      },
-    });
+    const response = await axios.get("https://api.akahu.io/v1/accounts", { headers });
     res.status(200);
     res.json(response.data);
   } catch (error) {
