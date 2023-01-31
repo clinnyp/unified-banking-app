@@ -1,6 +1,12 @@
 import prisma from "../utils/db";
-import { comparePassword, createJWT, hashPassword } from "../utils/auth";
+import {
+  comparePassword,
+  createJWT,
+  hashPassword,
+  headers,
+} from "../utils/auth";
 import { Prisma } from "@prisma/client";
+import axios from "axios";
 
 export const createNewUser = async (req, res, next) => {
   try {
@@ -47,5 +53,20 @@ export const signIn = async (req, res, next) => {
     res.json({ token });
   } catch (e) {
     res.json({ message: "user not found" });
+  }
+};
+
+export const getConnections = async (req, res) => {
+  try {
+    const response = await axios.get("https://api.akahu.io/v1/accounts", {
+      headers: {
+        Authorization: `Bearer ${process.env.USER_TOKEN}`,
+        "X-Akahu-ID": process.env.APP_TOKEN,
+      },
+    });
+    res.status(200);
+    res.json(response.data);
+  } catch (error) {
+    console.error(error);
   }
 };

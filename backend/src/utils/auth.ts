@@ -40,3 +40,9 @@ export const hashPassword = (password) => {
 export const comparePassword = (password, hashedPassword) => {
   return bcrypt.compare(password, hashedPassword);
 };
+
+// for akahu
+export const headers = {
+  Authorization: `Bearer ${process.env.USER_TOKEN}`,
+  "X-Akahu-ID": process.env.APP_TOKEN,
+};
