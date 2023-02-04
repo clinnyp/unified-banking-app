@@ -12,11 +12,18 @@ export default function BankCard(props: any): JSX.Element {
           <View style={styles.detailsContainer}>
             <Text style={{ textAlign: "center", fontSize: 14 }}>{name}</Text>
             <Text
-              style={{ textAlign: "center", fontSize: 24, paddingVertical: 5 }}
+              style={{
+                textAlign: "center",
+                fontSize: 28,
+                paddingVertical: 5,
+                fontWeight: "400",
+              }}
             >
               {amount}
             </Text>
-            <Text style={{ textAlign: "center", fontSize: 12 }}>
+            <Text
+              style={{ textAlign: "center", fontSize: 12, color: "#777986" }}
+            >
               {`${available} Available`}
             </Text>
           </View>
@@ -38,7 +45,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     borderRadius: 5,
     minWidth: "50%",
-    margin: "5%",
+    margin: "3%",
     paddingVertical: 10,
     shadowColor: "#000",
     shadowOffset: {
