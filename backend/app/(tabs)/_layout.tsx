@@ -5,9 +5,18 @@ import { Tabs } from 'expo-router'
 export default function TabLayout() {
   return (
     <Tabs>
-      <Tabs.Screen name="index" options={{ title: 'Accounts' }} />
-      <Tabs.Screen name="payments" options={{ title: 'Payments' }} />
-      <Tabs.Screen name="transfer" options={{ title: 'Transfer' }} />
+      <Tabs.Screen
+        name="index"
+        options={{ title: 'Accounts', headerTitleAlign: 'center' }}
+      />
+      <Tabs.Screen
+        name="payments"
+        options={{ title: 'Payments', headerTitleAlign: 'center' }}
+      />
+      <Tabs.Screen
+        name="transfer"
+        options={{ title: 'Transfer', headerTitleAlign: 'center' }}
+      />
     </Tabs>
   )
 }
