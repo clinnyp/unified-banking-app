@@ -3,15 +3,13 @@ import React from 'react'
 import { Stack, Tabs } from 'expo-router'
 
 export default function RootLayout() {
-  return (
-    <RootLayoutNav  />
-  )
+  return <RootLayoutNav />
 }
 
 function RootLayoutNav() {
   return (
     <Stack>
-      <Stack.Screen name="(tabs)" options={{headerShown: false}} />
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
     </Stack>
   )
 }
