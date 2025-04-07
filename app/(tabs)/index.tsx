@@ -1,7 +1,7 @@
 import React from 'react'
 import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, View, SafeAreaView, FlatList } from 'react-native'
-import BankCard from '../../src/components/BankCard'
+import AccountCard from '../../src/components/AccountCard'
 
 const DATA = [
   {
@@ -30,7 +30,7 @@ export default function Accounts() {
       <FlatList
         data={DATA}
         renderItem={({ item }) => (
-          <BankCard
+          <AccountCard
             name={item.name}
             bankName={item.bankName}
             amount={item.amount}
