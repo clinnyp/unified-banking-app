@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { Tabs } from 'expo-router'
 import { Ionicons } from '@expo/vector-icons'
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6'
 
 export default function TabLayout() {
   return (
@@ -10,11 +11,18 @@ export default function TabLayout() {
         name="index"
         options={{
           headerRight: () => (
-            <Ionicons
-              name="person-circle"
-              style={{ marginRight: 15 }}
-              size={28}
-            />
+            <Pressable hitSlop={20}>
+              <Ionicons
+                name="person-circle"
+                style={{ marginRight: 15 }}
+                size={28}
+              />
+            </Pressable>
+          ),
+          headerLeft: () => (
+            <Pressable hitSlop={20}>
+              <FontAwesome6 name="list" size={20} style={{ marginLeft: 15 }} />
+            </Pressable>
           ),
           title: 'Accounts',
           tabBarIcon: () => <Ionicons name="wallet" size={28} />,
@@ -25,7 +33,7 @@ export default function TabLayout() {
         name="payments"
         options={{
           title: 'Payments',
-          tabBarIcon: () => <Ionicons name="card" size={28} />,
+          tabBarIcon: () => <FontAwesome6 name="money-bill" size={28} />,
           headerTitleAlign: 'center',
         }}
       />
@@ -33,8 +41,9 @@ export default function TabLayout() {
         name="transfer"
         options={{
           title: 'Transfer',
+          headerTitle: 'Transfer funds',
           tabBarIcon: () => (
-            <Ionicons name="paper-plane" size={27} color="black" />
+            <FontAwesome6 name="money-bill-transfer" size={28} />
           ),
           headerTitleAlign: 'center',
         }}
