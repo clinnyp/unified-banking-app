@@ -9,13 +9,13 @@ import {
 type Props = {
   name: string
   bankName: string
-  amount: string
+  current: string
   available: string
 }
 
 export default function BankCard({
   name,
-  amount,
+  current,
   available,
 }: Props): JSX.Element {
   const image = {
@@ -55,12 +55,12 @@ export default function BankCard({
                 fontWeight: '400',
               }}
             >
-              {amount}
+              ${current == '0' ? '0.00' : current}
             </Text>
             <Text
               style={{ textAlign: 'center', fontSize: 12, color: '#777986' }}
             >
-              {`${available} Available`}
+              ${available == '0' ? '0.00' : available} Available
             </Text>
           </View>
         </ImageBackground>
