@@ -14,14 +14,9 @@ export default function TabLayout() {
             <Pressable hitSlop={20}>
               <Ionicons
                 name="person-circle"
-                style={{ marginRight: 15 }}
+                style={{ marginRight: 16 }}
                 size={28}
               />
-            </Pressable>
-          ),
-          headerLeft: () => (
-            <Pressable hitSlop={20}>
-              <FontAwesome6 name="list" size={20} style={{ marginLeft: 15 }} />
             </Pressable>
           ),
           title: 'Accounts',
@@ -29,14 +24,7 @@ export default function TabLayout() {
           headerTitleAlign: 'center',
         }}
       />
-      <Tabs.Screen
-        name="payments"
-        options={{
-          title: 'Payments',
-          tabBarIcon: () => <FontAwesome6 name="money-bill" size={28} />,
-          headerTitleAlign: 'center',
-        }}
-      />
+
       <Tabs.Screen
         name="transfer"
         options={{
