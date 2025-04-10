@@ -5,6 +5,7 @@ import {
   ImageBackground,
   useWindowDimensions,
 } from 'react-native'
+import { formatCurrency } from '../utils'
 
 type Props = {
   name: string
@@ -18,9 +19,6 @@ export default function BankCard({
   current,
   available,
 }: Props): JSX.Element {
-  const image = {
-    uri: 'https://images.unsplash.com/photo-1465056836041-7f43ac27dcb5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80',
-  }
   const { width } = useWindowDimensions()
   const imageSize = Math.min(width / 2.5)
 
@@ -28,7 +26,7 @@ export default function BankCard({
     <>
       <View style={styles.container}>
         <ImageBackground
-          source={image}
+          source={require('../assets/card_background.jpg')}
           resizeMode="cover"
           style={[styles.image, { maxHeight: imageSize }]}
         >
@@ -55,12 +53,12 @@ export default function BankCard({
                 fontWeight: '400',
               }}
             >
-              ${current == '0' ? '0.00' : current}
+              {formatCurrency(Number(current))}
             </Text>
             <Text
               style={{ textAlign: 'center', fontSize: 12, color: '#777986' }}
             >
-              ${available == '0' ? '0.00' : available} Available
+              {`${formatCurrency(Number(available))} Available`}
             </Text>
           </View>
         </ImageBackground>

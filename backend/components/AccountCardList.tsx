@@ -1,33 +1,36 @@
-import { Text, View, StyleSheet, Image } from 'react-native'
+import { Text, View, StyleSheet, Image, Pressable } from 'react-native'
 import Entypo from '@expo/vector-icons/Entypo'
+import { formatCurrency } from '../utils'
 
 type Props = {
   accountName: string
   current: string
   available: string
+  displayIcon: string
   showChevron?: boolean
+  onPress?: () => void
 }
 
 export default function AccountCardList({
   accountName,
   current,
   available,
+  displayIcon,
   showChevron,
+  onPress,
 }: Props) {
-  const image =
-    'https://images.unsplash.com/photo-1465056836041-7f43ac27dcb5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80'
   return (
-    <View style={styles.container}>
+    <Pressable onPress={onPress} style={styles.container}>
       <View style={styles.accountContainer}>
         <View style={{ flexDirection: 'row' }}>
-          <Image style={styles.accountImage} source={{ uri: image }} />
+          <Image style={styles.accountImage} source={{ uri: displayIcon }} />
           <View style={{ paddingLeft: 12 }}>
             <Text style={{ fontSize: 14 }}>{accountName}</Text>
             <Text style={{ fontSize: 18, fontWeight: '600' }}>
-              ${current == '0' ? '0.00' : current}
+              {formatCurrency(Number(current))}
             </Text>
             <Text style={{ fontSize: 14, color: 'grey' }}>
-              ${available == '0' ? '0.00' : available} Available
+              {`${formatCurrency(Number(available))} Available`}
             </Text>
           </View>
         </View>
@@ -37,7 +40,7 @@ export default function AccountCardList({
           </View>
         )}
       </View>
-    </View>
+    </Pressable>
   )
 }
 
