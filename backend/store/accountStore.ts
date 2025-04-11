@@ -3,11 +3,26 @@ import { fetchAccounts } from "../api/api";
 
 type AccountState = {
   accounts: any[]
+  from: any
+  to: any
+  amount: any
+
+  updateFrom: (account) => void
+  updateTo: (account) => void
+  updateAmount: (amount) => void
   getAccounts: () => Promise<void>
+  resetTransferSelection: () => void
 }
 
 export const useAccountStore = create<AccountState>((set) => ({
   accounts: [],
+  from: '',
+  to: '',
+  amount: '',
+
+  updateFrom: (account) => set({ from: account }),
+  updateTo: (account) => set({ to: account }),
+  updateAmount: (amount) => set({ amount }),
   getAccounts: async () => {
     try {
       const { data } = await fetchAccounts()
@@ -15,5 +30,10 @@ export const useAccountStore = create<AccountState>((set) => ({
     } catch (error) {
       throw new Error(error)
     }
-  }
+  },
+  resetTransferSelection: () => set({
+    from: '',
+    to: '',
+    amount: '',
+  })
 }))
