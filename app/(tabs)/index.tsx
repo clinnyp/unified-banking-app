@@ -4,47 +4,38 @@ import {
   StyleSheet,
   Text,
   View,
+  Button,
   SafeAreaView,
   FlatList,
   Pressable,
 } from 'react-native'
-import AccountCard from '../../src/components/AccountCard'
-import AccountCardList from '../../src/components/AccountCardList'
+import AccountCard from '../../components/AccountCard'
+import AccountCardList from '../../components/AccountCardList'
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
-import { useNavigation } from 'expo-router'
+import { router, useNavigation } from 'expo-router'
 import { FontAwesome6 } from '@expo/vector-icons'
-
-const DATA = [
-  {
-    id: 1,
-    name: 'Daily Expenses',
-    bankName: 'Westpac',
-    amount: '$1010.33',
-    available: '$1010.33',
-  },
-  {
-    id: 2,
-    name: 'Splurge',
-    bankName: 'ANZ',
-    amount: '$52.33',
-    available: '$21.67',
-  },
-  {
-    id: 3,
-    name: 'Mortgage',
-    bankName: 'ANZ',
-    amount: '$11010.45',
-    available: '$11010.45',
-  },
-]
+import { useAccountStore } from '../../store/accountStore'
 
 export default function Accounts() {
-  const [listToggle, setListToggle] = useState(false)
+  const [listToggle, setListToggle] = useState(true)
   const navigation = useNavigation()
+  const getAccounts = useAccountStore((state) => state.getAccounts)
+  const accounts = useAccountStore((state) => state.accounts)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        await getAccounts()
+      } catch (error) {
+        console.error('Failed to fetch accounts:', error)
+      }
+    }
+    fetchData()
+  }, [])
 
   const handleListToggle = (cardToggle: boolean) => {
     return cardToggle ? (
-      <Pressable onPress={() => setListToggle((prev) => !prev)}>
+      <Pressable onPress={() => setListToggle((prev) => !prev)} hitSlop={20}>
         <MaterialCommunityIcons
           name="card-outline"
           size={24}
@@ -52,7 +43,7 @@ export default function Accounts() {
         />
       </Pressable>
     ) : (
-      <Pressable onPress={() => setListToggle((prev) => !prev)}>
+      <Pressable onPress={() => setListToggle((prev) => !prev)} hitSlop={20}>
         <FontAwesome6 name="list" size={20} style={{ marginLeft: 16 }} />
       </Pressable>
     )
@@ -65,20 +56,22 @@ export default function Accounts() {
   return (
     <SafeAreaView style={{ flex: 0 }}>
       <FlatList
-        data={DATA}
+        data={accounts}
         renderItem={({ item }) =>
           listToggle ? (
             <AccountCard
               name={item.name}
-              bankName={item.bankName}
-              amount={item.amount}
-              available={item.available}
+              bankName={item.balance.current}
+              current={item.balance.current}
+              available={item.balance.available}
             />
           ) : (
             <AccountCardList
               accountName={item.name}
-              amount={item.amount}
-              available={item.available}
+              current={item.balance.current}
+              available={item.balance.available}
+              displayIcon={item.connection.logo}
+              showChevron
             />
           )
         }
