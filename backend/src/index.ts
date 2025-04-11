@@ -28,7 +28,6 @@ app.get('/accounts', async (c) => {
 app.post('/transfer', async (c) => {
   try {
     const data = await c.req.json()
-    console.log(data)
     const response = await fetch("https://api.akahu.io/v1/transfers", {
       method: "POST",
       headers: {
