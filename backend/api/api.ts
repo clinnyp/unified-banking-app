@@ -8,3 +8,21 @@ export async function fetchAccounts() {
 
   return response.json()
 }
+
+export async function transferMoney(to, from, amount) {
+  const response = await fetch(`${baseUrl}/transfer`, {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      to,
+      from,
+      amount
+    })
+  })
+  if (!response.ok) {
+    throw new Error(`API error: ${response.status}`)
+  }
+  return response.json()
+}
