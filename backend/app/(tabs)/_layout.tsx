@@ -34,6 +34,7 @@ export default function TabLayout() {
             <FontAwesome6 name="money-bill-transfer" size={28} />
           ),
           headerTitleAlign: 'center',
+          tabBarStyle: { display: 'none' },
         }}
       />
     </Tabs>
