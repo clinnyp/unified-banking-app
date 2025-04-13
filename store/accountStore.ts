@@ -10,7 +10,7 @@ type AccountState = {
   updateFrom: (account) => void
   updateTo: (account) => void
   updateAmount: (amount) => void
-  getAccounts: () => Promise<void>
+  getAccounts: () => Promise<{ data: any }>
   resetTransferSelection: () => void
 }
 
@@ -27,6 +27,7 @@ export const useAccountStore = create<AccountState>((set) => ({
     try {
       const { data } = await fetchAccounts()
       set({ accounts: data.items })
+      return { data }
     } catch (error) {
       throw new Error(error)
     }
