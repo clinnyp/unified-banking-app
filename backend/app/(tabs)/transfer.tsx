@@ -16,6 +16,7 @@ export default function Transfer() {
   const amount = useAccountStore((state) => state.amount)
   const navigation = useNavigation()
   const router = useRouter()
+  const getAccounts = useAccountStore((state) => state.getAccounts)
   const resetTransferSelection = useAccountStore(
     (state) => state.resetTransferSelection
   )
@@ -31,19 +32,29 @@ export default function Transfer() {
         setLoading(true)
         const data = await transferMoney(to, from, amount)
         if (data.success) {
-          setLoading(false)
-
-          router.replace({
-            pathname: '/receipt',
-            params: {
-              amount,
-              fromAccName: from.name,
-              fromAccNumber: from.formatted_account,
-              toAccName: to.name,
-              toAccNumber: to.formatted_account,
-            },
-          })
-          resetTransferSelection()
+          try {
+            const fromAccName = from.name
+            const fromAccNumber = from.formatted_account
+            const toAccName = to.name
+            const toAccNumber = to.formatted_account
+            setLoading(false)
+            const { data } = await getAccounts()
+            if (data.success) {
+              resetTransferSelection()
+              router.replace({
+                pathname: '/receipt',
+                params: {
+                  amount,
+                  fromAccName,
+                  fromAccNumber,
+                  toAccName,
+                  toAccNumber,
+                },
+              })
+            }
+          } catch (stateError) {
+            console.error(stateError)
+          }
         }
       } catch (error) {
         console.error('Transfer failed:', error)
