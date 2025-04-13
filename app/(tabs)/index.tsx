@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { StatusBar } from 'expo-status-bar'
 import {
   StyleSheet,
@@ -12,7 +12,7 @@ import {
 import AccountCard from '../../components/AccountCard'
 import AccountCardList from '../../components/AccountCardList'
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
-import { router, useNavigation } from 'expo-router'
+import { useNavigation } from 'expo-router'
 import { FontAwesome6 } from '@expo/vector-icons'
 import { useAccountStore } from '../../store/accountStore'
 
@@ -57,6 +57,7 @@ export default function Accounts() {
     <SafeAreaView style={{ flex: 0 }}>
       <FlatList
         data={accounts}
+        keyExtractor={(item) => item._id}
         renderItem={({ item }) =>
           listToggle ? (
             <AccountCard
