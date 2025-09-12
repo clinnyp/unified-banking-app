@@ -18,7 +18,7 @@ app.get('/accounts', async (c) => {
     })
     if (!response.ok) {
       const code = response.status
-      return c.json({ success: false }, response.status as 400 | 401 | 403 | 404 | 500)
+      return c.json({ success: false }, 400)
     }
     const data = await response.json()
     return c.json({ success: true, data }, 200)
@@ -45,7 +45,7 @@ app.post('/transfer', async (c) => {
     })
 
     if (!response.ok) {
-      return c.json({ success: false }, response.status as 400 | 401 | 403 | 404 | 500)
+      return c.json({ success: false }, 400)
     }
 
     return c.json({ success: true, data }, 200)
