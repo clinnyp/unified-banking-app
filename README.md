@@ -18,4 +18,4 @@ This projects follows a client-server architecture:
 
 🔗 Check out the backend repository for this project:
 
-[unified-banking-app-backend](https://github.com/clinnyp/unified-banking-app-backend)
+<a href="https://github.com/clinnyp/unified-banking-app-backend" target="_blank">unified-banking-app-backend</a>
