@@ -6,7 +6,7 @@ Leveraging <a href=https://www.akahu.nz/ target="_blank">Akahu's</a> Open Bankin
 </h4>
 
 <div align="center">
-  <img src="https://image.mux.com/7aEDrbMyEfCV4joWpA5yUKPUAaXzJz6YaVfq1oCli7U/animated.gif?width=640&height=360" alt="Unified Banking App Demo" />
+  <img src="public/demo.gif" alt="Demo GIF" />
 </div>
 
 # Architecture
